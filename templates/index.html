@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hash Generator</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+        input, button, select { padding: 10px; margin: 10px; font-size: 16px; }
+        .result { margin-top: 20px; font-size: 18px; color: #333; }
+    </style>
+</head>
+<body>
+    <h1>Hash Generator (MD5 & SHA-256)</h1>
+    <form method="post">
+        <input type="text" name="text" placeholder="Enter text" required>
+        <select name="algorithm">
+            <option value="md5" {% if algorithm == 'md5' %}selected{% endif %}>MD5</option>
+            <option value="sha256" {% if algorithm == 'sha256' %}selected{% endif %}>SHA-256</option>
+        </select>
+        <button type="submit">Generate</button>
+    </form>
+
+    {% if hash_result %}
+    <div class="result">
+        <p><strong>{{ algorithm.upper() }} Hash:</strong> {{ hash_result }}</p>
+    </div>
+    {% endif %}
+</body>
+</html>
